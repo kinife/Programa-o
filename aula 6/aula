@@ -1,0 +1,122 @@
+###  CONTINUAÇAO TYPEDEF
+    
+    declaração:
+    
+    struct fracao{
+        int num;
+        int den;
+    }
+    
+    typedef struct fracao fracao_t;
+    
+    int main(){
+    fracao_t;
+    }
+    
+    -> serve para renomear um tipo, no exemplo acima struct fracao foi renomeado para fracao_t;
+    
+    ou 
+    
+    typedef struct pessoa{
+        char nome [128];
+        char sobrenome [128];
+        ??? *mae;
+        ??? *pai
+    } pessoa_t
+    
+    -> struct pessoa passa a ser pessoa_t depois da linha;
+    -> ??? é um ponteiro do tipo struct pessoa, para apontar em end de memoria do mesmo tipo dentro dela mesma;
+
+    
+######### ESTRUTURAS EM ARQUIVOS
+
+    ex. escrita
+    
+    typedef struct fracao{
+        int num;
+        int den;
+        } fracao_t;
+        
+    int main(){
+     
+     FILE *arq = fopen("fracoes.dat","rb");
+    
+    
+     fracao_t f[3];
+     
+     f[0].num =1;
+     f[0].den =2;
+     
+     f[1].num =1;
+     f[1].den =3;
+     
+     f[2].num =1;
+     f[2].den =666;
+     
+     fwrite (&f,sizeof(fracao_t),3,arq);
+     
+     fclose(arq);
+     }
+     
+     ex. leitura
+    
+    typedef struct fracao{
+        int num;
+        int den;
+        } fracao_t;
+        
+    int main(){
+     
+     FILE *arq = fopen("fracoes.dat","rb");
+     
+     fread(&f,sizeof(fracao_t),3,arq);
+     
+     for...
+     
+     fclose(arq);
+     
+     }
+     
+     -> geralmente estruturas utilizam arquivos binarios.
+     
+     
+     
+     
+     
+     
+############ TAD's - Tipo abstrato de dados
+
+É um conceito teórico, útil para a resolução de problemas.
+Não possui relação direta com linguagens de prgramação.
+Um TAD não considera detalhes de implementação.
+
+É um modelo matemático, formalmente definido por dois conjuntos (V,O): - Conjunto de possiveis valores TAF (V)
+                                                                       - Conjunto de operações sobre seus valores (O);
+                                                                       
+Reflete  a maneira como a informação é vista por um usuário
+
+
+-> Projetista / programador: - Como é implementado?
+                             - Qual a eficiencia?
+                             - Quais funcoes fornecer?
+                             - Oque pode e o que não pode?
+                             
+-> Usuário / programador: - Qual a inteface disponível?
+
+
+Exercicio: Defina o tipo Abstrato de dados Sacola:
+    Conjunto de valores: Capacidade volumetrica, material, cor, quantidade de alças, geometria....
+    Conjunto de operações:
+        - colocar item: se possivel adiciona um item em uma dada sacola.
+        pre condiçoes: deve existir uma sacola,
+                        se volume, peso e dim estao ok , colocar.
+        pos condicoes: se coube, o item vai estar dentro da sacola. E seu peso, volume,..., estarao atualizados. se não cabe, nao cabe :(
+        
+        - verificar  se esta cheia: verifica se a sacola esta cheia ou nao
+        pre condicoes: deve existir uma sacola, 
+        
+        
+Como implementar?
+    Diferentes formas: vetor(estatico/dinamico), matriz(ndimensoes), lisa encadeada, campo numerico de elementos?
+    Como ele pode ser implementado de diversas formas, geralemnte algumas implementaçoes serao melhores que outras(clareza de codigo, uso de memória,
+                        

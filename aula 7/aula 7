@@ -1,0 +1,16 @@
+######## TAD lista
+Aplicaçoes de listas:
+    Conjunto de elementos quaisquer
+    
+TAD lista: 
+    Conjunto de valores e operações (V,O);
+    Sequencia ordenada de n elementos;
+    Genérico(pode ser usado para qualquer coisa);
+    
+    Exemplo de operaçoes:
+        inserir elementos, excluir elementos, procurar elementos, deletar lista, nesimo elemento da lista, quais sao elementos unicos de uma lista, etc....
+        
+    Operações basicas: 
+        Pelo menos, inserção, busca e remoção.
+        
+    Armazena os valores da lista em uma STRUCT

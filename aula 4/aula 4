@@ -1,0 +1,93 @@
+# arquivos
+
+são armazenados em memória secundária
+criar, manipular, atualizar e processar arquivos em c
+
+cada carcter da tabela ASCII tem 1 byte
+em C cada arquivo é considerado como uma sequencia de bytes
+todo o arquivo termina com um marcador de fim de arquivo
+quando se inicia um programa, obrigatoriamente tem 3 fluxo de dados.
+1- stdin(arquivo ou stream entrada padrão)
+2- stdout(arquivo ou stream de saida padrão)
+3- stderr(arquivo ou stream de erro padrão)
+
+a manipulação de arquivos começa com sua abertura
+    cria-se um stream de dados para o arquivo
+apos o fim das manipulações deve fechar o arquivo(stream)
+
+com a abertura de um arquivo, obtem-se o ponteiro para uma estrutura de arquivo (FILE), que contem informaçoes do arquivo
+    por exemplo, posição atual de leitura e escrita no arquivo
+
+declaraçao de ptr para arquivo:
+    FILE *ponteiro_para_arquivo;
+
+manipulação de arq:
+    abertura: 
+    FILE *arqvio;
+    manipulação:
+    arquivo = fopen ("documento.txt","r");
+
+o caminho p o arq, pode ser relativo ou absoluto:
+    FILE *arqvio, *arquivo_2;
+    arquivo = fopen ("/home/fellipy/documento.txt","r");
+    arquivo_2 = fopen ("../documento.txt","r");
+
+fechamento de arq:
+    fclose(arq2);
+    
+funçoes equivalentes as funçoes p arq:
+    scanf -> fscanf
+    printf -> fprintf
+    
+fim de arquivo:
+    while(fscanf(arq,"%d", &val) != EOF) {....}
+    while(!feof(arq)){...}fscanf antes do while!
+    
+retornar ponteiro para o inicio do arq:
+    rewind(arq);
+    
+movimentar o ponteiro em posições arbitrarias:
+    fseek(arq, deslocamento, a_partir_de);
+    fseek(arq, 1, SEEK_SET); -> 1byte a partir do inicio do arquivo
+    
+    SET Inicio do arquivo
+    CUR Posição atual do arquivo
+    END Final do arquivo
+    
+    avançar deslocamento: x
+    retroceder deslocamento: -x
+    
+muitas vezes é mais facil: 
+    abrir um arquivo p leitura e outro p processamento, ao final do tratamento de dados, deletar o arquivo de leitura e renomear o arquivo de processamento com o nome d arquivo atual.
+    
+    remove(arquivo);
+    
+ftell: 
+    quantos bytes a partir do inicio do arquivo
+    
+funçoes de arquivo: man stdio
+
+sempre feche o arquivo, c nao impoe estrutura aos arquvis, os arquivos estao organizados de forma sequencial.
+
+
+
+
+
+# arquivos de acesso aleatório
+    
+arquivos binarios;
+exatamente a mesma representação em memória no arquivo
+tratamento de arquivos binários: 
+    nunca usar as funções fscanf, fprintf, putc, etc;
+    assim como as funçoes de arquivos binarios nao servem para arquivos texto
+    apenas as funçoes de posição do ponteiro sao validas para ambos: fseek, fteeel
+    para leitura -> fread: fread(&val, sizeof(int), 1 , arq);
+    para escrita -> fwrite: fwrite(&val, tam em bytes,1,arq);   // fwrite(&val, sizeof(int),1,arq); 
+
+Abertura e fechamento de arquivos continuam sendo com as funçoes FOPEN e fclose (w->wb)
+
+
+# recursão
+para entender recursão, voce deve primeiro entender recursão
+é aquela funçao que chamaela mesma, direta ou indiretamente.
+ex. fatorial -> return n*fat(n-1)

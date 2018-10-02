@@ -1,0 +1,68 @@
+# continuação recursão
+
+caso fibonacci:
+se n=1 res=0
+se n=2 res=1
+
+caso contrario fib(n)=fib(n-1)+fib(n-2)
+
+problema da função recursiva, faz a mesma função diversas vezes.(demora mais)
+fazer função iterativa.
+
+recursao vs iteração
+a recursão não usa laços mas consegue simular;
+funções reucursivas geralmente ocupam espaço constante;
+funções recursivas tendem a serem amis lentas do que iterativas(overhead), chama uma função atras da outra e vai colocando na pilha(+ tempo);
+funções recursivas são mais elegantes/simples/curtas;
+
+em caso de complexidade entre recursão e iteração similares, utilizar o iterativo pois será mais rapido.
+_________________________________________________________
+## estruturas uniões e enumerações
+
+->  Estruturas:
+    Aglutinação de variáveis heterogeneas, para formar uma estrutura homogenea.
+    Agregar diferentes tipos de dados...
+    
+    definir estruturas: ex
+    
+    struct fracao{
+    
+    int numerador;
+    int denominador;
+    
+};
+
+    struct pessoa{
+    char nome[128];
+    char sobrenome[128];
+    int idade;
+    float altura;
+};
+
+    não foi definido nenhuma variavel no programa principal;
+    o nome do tipo é struct fracao/ struct pessoa;
+    vetores e matrizes continuam sendo como antes 
+    -> struct pessoa pessoas[10];
+    
+    ponteiros para estruturas funcionam da mesma formar
+    -> * e &
+    -> struct pessoa *pessoas;
+       pessoas = (sizeof(struct pessoa*) malloc(10 * sizeof(struct pessoa));
+       /alocaçao dinamica para struct
+    -> (*p).nome;
+       /derreferencia e depois acessa o campo
+       ou p->nome
+       /(*p)==p->
+    -> passagem de estrutura por referencia utilizando *
+       void le_pessoa(struct pessoa *p)
+       /para nao dar overhead
+       
+_________________________________________________________
+### Enumerações
+
+Parecidas com estruturas;
+    enum meses{jan,fev,mar,abr,mai,jun,jul,ago,set,out,nov,dez};
+       
+
+
+
